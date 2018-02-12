@@ -3,8 +3,8 @@ package com.id.cap.skillgrid.dto;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 @Table(name = "user_answers")
@@ -25,7 +25,7 @@ public class Answer {
     @Column(name="grade")
     private int grade;
     @Column(name="answer_datetime")
-    private Date answerDateTime;
+    private String answerDateTime;
     @Column(name="suggested")
     private int suggested;
 
@@ -34,7 +34,7 @@ public class Answer {
         this.domain = domain;
         this.skill = skill;
         this.grade = grade;
-        this.answerDateTime=new java.sql.Date(Calendar.getInstance().getTime().getTime());
+        this.answerDateTime=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
         this.suggested = suggested;
     }
 }
